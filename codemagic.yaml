@@ -1,0 +1,47 @@
+# Codemagic CI/CD Build Configuration for MindMatrix Android App
+# Documentation: https://docs.codemagic.io/yaml/building-android/
+
+workflows:
+  android-release:
+    name: MindMatrix Android Release Build
+    max_build_duration: 60
+    instance_type: linux
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'main'
+        - pattern: 'master'
+    environment:
+      java: 17
+      vars:
+        # Preconfigured signing credentials matching your mindmatrix-upload-key.jks
+        STORE_PASSWORD: "mindmatrix"
+        KEY_ALIAS: "mindmatrixkey"
+        KEY_PASSWORD: "mindmatrix"
+    scripts:
+      - name: Make Gradle wrapper executable
+        script: |
+          chmod +x gradlew
+      - name: Set up local build configurations
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+      - name: Run compilation checks
+        script: |
+          ./gradlew compileDebugKotlin compileReleaseKotlin
+      - name: Build Signed Release APK (Universal Installation)
+        script: |
+          ./gradlew assembleRelease
+      - name: Build Signed Release Android App Bundle (AAB for Google Play / App Stores)
+        script: |
+          ./gradlew bundleRelease
+    artifacts:
+      - app/build/outputs/apk/release/*.apk
+      - app/build/outputs/bundle/release/*.aab
+    publishing:
+      email:
+        recipients:
+          - royabhay0079@gmail.com
+        notify:
+          success: true
+          failure: true

@@ -1,0 +1,6 @@
+{
+  "name": "MindMatrix",
+  "description": "Universal educational puzzle game in a clean white layout for ages 5 to 70 featuring Visual Puzzles, Mathematics, Physics, Chemistry, Biology, History, and AI-powered puzzle generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

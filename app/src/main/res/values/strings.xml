@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MindMatrix</string>
+
+    <!-- Firebase App Configuration Resources -->
+    <string name="google_app_id" translatable="false">1:178388141555:android:com_aistudio_puzzlequest</string>
+    <string name="gcm_defaultSenderId" translatable="false">178388141555</string>
+    <string name="default_web_client_id" translatable="false">178388141555.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://puzzlequest-default-rtdb.firebaseio.com</string>
+    <string name="project_id" translatable="false">puzzlequest-ai</string>
+    <string name="google_api_key" translatable="false">AIzaSyDummyKeyForLocalAnalytics0000000</string>
+</resources>
